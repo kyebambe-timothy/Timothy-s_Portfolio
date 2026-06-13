@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Timothy Kyebambe — Systems Engineer & Technical Solutions Architect</title>
+  <meta name="description" content="Timothy Kyebambe — Web & App Developer and IT student at Uganda Christian University, Kampala. Building clean, purposeful digital tools." />
+  <meta name="author" content="Timothy Kyebambe" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Timothy Kyebambe — Web & App Developer" />
+  <meta property="og:description" content="Building web applications, SQL-backed tools, and data-driven products. IT student at UCU, Kampala, Uganda." />
+  <meta property="og:image" content="images/profile.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Timothy Kyebambe — Portfolio" />
+  <meta name="twitter:description" content="Systems Engineer & Technical Solutions Architect based in Kampala, Uganda." />
+  <meta name="twitter:image" content="images/profile.jpg" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%23020617'/><text x='50%' y='58%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='bold' font-size='52' fill='%2334d399'>TK</text></svg>" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Syne', 'sans-serif'],
+            mono: ['DM Mono', 'monospace'],
+            body: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            slate: {
+              950: '#020617',
+              900: '#0f172a',
+              800: '#1e293b',
+              700: '#334155',
+            },
+            emerald: {
+              400: '#34d399',
+              500: '#10b981',
+              300: '#6ee7b7',
+            }
+          },
+          animation: {
+            'fade-up': 'fadeUp 0.8s ease forwards',
+            'fade-in': 'fadeIn 1s ease forwards',
+            'slide-right': 'slideRight 0.8s ease forwards',
+            'pulse-slow': 'pulse 3s ease-in-out infinite',
+          },
+          keyframes: {
+            fadeUp: {
+              '0%': { opacity: '0', transform: 'translateY(32px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            slideRight: {
+              '0%': { opacity: '0', transform: 'translateX(-32px)' },
+              '100%': { opacity: '1', transform: 'translateX(0)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --emerald: #34d399;
+      --emerald-dim: #10b981;
+      --bg-deep: #020617;
+      --bg-card: #0f172a;
+      --bg-border: #1e293b;
+      --text-muted: #94a3b8;
+    }
+ 
+    * { box-sizing: border-box; }
+ 
+    body {
+      background-color: var(--bg-deep);
+      color: #e2e8f0;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+ 
+    /* Grain overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.35;
+    }
+ 
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg-deep); }
+    ::-webkit-scrollbar-thumb { background: var(--emerald-dim); border-radius: 2px; }
+ 
+    /* Nav */
+    .nav-link {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      transition: color 0.2s ease;
+    }
+    .nav-link:hover { color: var(--emerald); }
+ 
+    /* Hero */
+    .hero-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+    }
+ 
+    .hero-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--emerald);
+    }
+ 
+    /* Animated gradient on hero title */
+    .gradient-text {
+      background: linear-gradient(135deg, #e2e8f0 0%, var(--emerald) 50%, #e2e8f0 100%);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 5s ease infinite;
+    }
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+ 
+    /* Section label */
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--emerald);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .section-label::after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 48px;
+      background: var(--emerald);
+      opacity: 0.5;
+    }
+ 
+    /* Cards */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--bg-border);
+      border-radius: 12px;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px) scale(1.01);
+      border-color: var(--emerald-dim);
+      box-shadow: 0 0 32px rgba(16,185,129,0.08);
+    }
+ 
+    /* Skill card */
+    .skill-card {
+      background: var(--bg-card);
+      border: 1px solid var(--bg-border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .skill-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--emerald);
+      box-shadow: 0 0 24px rgba(52,211,153,0.12);
+    }
+ 
+    /* Buttons */
+    .btn-primary {
+      background: var(--emerald);
+      color: #020617;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      padding: 0.75rem 1.75rem;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      text-decoration: none;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 8px 24px rgba(52,211,153,0.3);
+      background: #6ee7b7;
+    }
+ 
+    .btn-outline {
+      background: transparent;
+      color: var(--emerald);
+      border: 1px solid var(--emerald-dim);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      padding: 0.75rem 1.75rem;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      text-decoration: none;
+    }
+    .btn-outline:hover {
+      transform: translateY(-2px) scale(1.03);
+      border-color: var(--emerald);
+      box-shadow: 0 4px 16px rgba(52,211,153,0.15);
+    }
+ 
+    /* Insight links */
+    .insight-link {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #e2e8f0;
+      text-decoration: none;
+      border-bottom: 1px solid var(--bg-border);
+      padding-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+    .insight-link:hover {
+      color: var(--emerald);
+      border-color: var(--emerald-dim);
+    }
+ 
+    /* Photo placeholder */
+    .photo-placeholder {
+      background: var(--bg-card);
+      border: 1px solid var(--bg-border);
+      border-radius: 8px;
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+    .photo-placeholder:hover {
+      transform: scale(1.03);
+      border-color: var(--emerald-dim);
+    }
+    .photo-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+ 
+    /* QR placeholder */
+    .qr-box {
+      background: var(--bg-card);
+      border: 1px solid var(--bg-border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      text-align: center;
+      transition: border-color 0.25s ease;
+    }
+    .qr-box:hover { border-color: var(--emerald-dim); }
+    .qr-inner {
+      width: 120px;
+      height: 120px;
+      background: #fff;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+ 
+    /* Contact form */
+    .form-input {
+      background: var(--bg-card);
+      border: 1px solid var(--bg-border);
+      border-radius: 6px;
+      color: #e2e8f0;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      padding: 0.75rem 1rem;
+      width: 100%;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      outline: none;
+    }
+    .form-input:focus {
+      border-color: var(--emerald-dim);
+      box-shadow: 0 0 0 3px rgba(16,185,129,0.1);
+    }
+    .form-input::placeholder { color: #475569; }
+ 
+    /* Divider line */
+    .h-line {
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--bg-border), transparent);
+    }
+ 
+    /* Dot indicator */
+    .dot { display: inline-block; width: 6px; height: 6px; background: var(--emerald); border-radius: 50%; }
+ 
+    /* Blueprint placeholder */
+    .blueprint-box {
+      background: linear-gradient(135deg, #0d1b2a 0%, #0f2d3d 100%);
+      border: 1px solid #1e4060;
+      border-radius: 12px;
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .blueprint-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(52,211,153,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(52,211,153,0.06) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+ 
+    /* Scroll animation observer */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+ 
+    /* Staggered delays */
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+ 
+    /* Mobile menu */
+    #mobile-menu { display: none; }
+    #mobile-menu.open { display: flex; }
+
+    /* Scroll line */
+    @keyframes scrollLine {
+      0% { transform: translateX(-100%); }
+      50% { transform: translateX(0%); }
+      100% { transform: translateX(100%); }
+    }
+
+    /* Experience timeline */
+    .timeline-line {
+      position: relative;
+    }
+    .timeline-line::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      bottom: 0;
+      width: 1px;
+      background: #1e293b;
+    }
+  </style>
+</head>
+<body>
+ 
+<!-- ═══════════════════════════════════════════════ NAV ═════════════════════════════════════════════════ -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-14">
+      <!-- Logo -->
+      <a href="#" class="font-display font-bold text-sm tracking-tight text-emerald-400">TK<span class="text-slate-400">.</span></a>
+ 
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#insights" class="nav-link">Insights</a>
+        <a href="#photography" class="nav-link">Photography</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+ 
+      <!-- CTA desktop -->
+      <a href="mailto:t.kyebambe.freewill@gmail.com" class="hidden md:inline-flex btn-primary text-xs py-2 px-4">
+        <span>↗</span> Get in Touch
+      </a>
+ 
+      <!-- Hamburger -->
+      <button id="hamburger" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Menu">
+        <span class="w-5 h-0.5 bg-slate-400 transition-all"></span>
+        <span class="w-5 h-0.5 bg-slate-400 transition-all"></span>
+        <span class="w-5 h-0.5 bg-slate-400 transition-all"></span>
+      </button>
+    </div>
+  </div>
+ 
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="md:hidden flex-col px-4 pb-4 gap-4 bg-slate-950/95 border-t border-slate-800/50">
+    <a href="#experience" class="nav-link py-2">Experience</a>
+    <a href="#skills" class="nav-link py-2">Skills</a>
+    <a href="#projects" class="nav-link py-2">Projects</a>
+    <a href="#insights" class="nav-link py-2">Insights</a>
+    <a href="#photography" class="nav-link py-2">Photography</a>
+    <a href="#contact" class="nav-link py-2">Contact</a>
+    <a href="mailto:t.kyebambe.freewill@gmail.com" class="btn-primary w-fit text-xs py-2 px-4 mt-2">↗ Get in Touch</a>
+  </div>
+</nav>
+ 
+<!-- ══════════════════════════════════════════════ HERO ═════════════════════════════════════════════════ -->
+<section id="home" class="min-h-screen flex flex-col justify-center pt-20 pb-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative">
+ 
+  <!-- Background glow -->
+  <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-emerald-500/5 blur-[120px] pointer-events-none"></div>
+ 
+  <div class="relative z-10">
+    <!-- Tag line -->
+    <div class="hero-tag mb-6 opacity-0" style="animation: fadeUp 0.6s ease 0.1s forwards;">
+      <span class="dot mr-2"></span>Open to opportunities · Kampala, Uganda
+    </div>
+ 
+    <!-- Main title -->
+    <h1 class="hero-title text-5xl sm:text-7xl lg:text-8xl xl:text-9xl mb-6 opacity-0" style="animation: fadeUp 0.8s ease 0.3s forwards;">
+      <span class="gradient-text">Timothy</span><br />
+      <span class="text-slate-300">Kyebambe</span>
+    </h1>
+ 
+    <!-- Subtitle -->
+    <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 mb-8 opacity-0" style="animation: fadeUp 0.8s ease 0.5s forwards;">
+      <span class="font-mono text-xs tracking-widest text-slate-400 uppercase">Web & App Developer</span>
+      <span class="hidden sm:block w-8 h-px bg-emerald-500/50"></span>
+      <span class="font-mono text-xs tracking-widest text-emerald-400/80 uppercase">IT Student · UCU</span>
+    </div>
+ 
+    <!-- Description -->
+    <p class="font-body text-slate-400 text-base sm:text-lg max-w-xl leading-relaxed mb-10 opacity-0" style="animation: fadeUp 0.8s ease 0.7s forwards;">
+      Building web and app solutions at the intersection of <span class="text-emerald-400">clean code</span>, 
+      structured data, and purposeful design. I build things that work — and tell the stories behind them.
+    </p>
+ 
+    <!-- CTAs -->
+    <div class="flex flex-col sm:flex-row gap-4 opacity-0" style="animation: fadeUp 0.8s ease 0.9s forwards;">
+      <a href="#projects" class="btn-primary">View My Work <span>→</span></a>
+      <a href="#contact" class="btn-outline">Start a Conversation</a>
+    </div>
+  </div>
+ 
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-4 sm:left-6 lg:left-8 opacity-0 flex items-center gap-3" style="animation: fadeIn 1s ease 1.5s forwards;">
+    <span class="font-mono text-xs text-slate-600 tracking-widest uppercase">Scroll</span>
+    <span class="w-8 h-px bg-slate-700 relative overflow-hidden">
+      <span class="absolute inset-0 bg-emerald-500 translate-x-[-100%]" style="animation: scrollLine 2s ease-in-out infinite;">
+      </span>
+    </span>
+  </div>
+</section>
+
+<div class="h-line mx-4 sm:mx-8"></div>
+
+<!-- ═══════════════════════════════════════════ ABOUT ═══════════════════════════════════════════════ -->
+<section id="about" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+  <div class="grid gap-8 lg:grid-cols-[320px_1fr] items-center">
+    <div class="photo-placeholder aspect-square overflow-hidden rounded-[28px] border border-slate-800">
+      <img src="images/profile.jpg" alt="Timothy Kyebambe" />
+    </div>
+    <div class="reveal">
+      <div class="section-label mb-4">About Me</div>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-slate-100 mb-4">I build systems that last — and tell the stories behind them.</h2>
+      <p class="font-body text-slate-400 text-base max-w-2xl leading-relaxed mb-6">
+        Systems engineering is about eliminating failure modes before they exist. That same discipline shapes how I approach everything — from designing web applications and structured databases, to the frame I choose when photographing a moment. Every element in this portfolio is intentional: built with clarity, engineered for resilience, and delivered with purpose.
+      </p>
+      <div class="grid gap-3 sm:grid-cols-2">
+        <div class="card p-5">
+          <h3 class="font-display font-semibold text-lg text-slate-100 mb-2">Location</h3>
+          <p class="font-body text-slate-400 text-sm">Kampala, Uganda</p>
+        </div>
+        <div class="card p-5">
+          <h3 class="font-display font-semibold text-lg text-slate-100 mb-2">Focus</h3>
+          <p class="font-body text-slate-400 text-sm">Web & app development, SQL database design, and thoughtful digital products.</p>
+        </div>
+        <div class="card p-5">
+          <h3 class="font-display font-semibold text-lg text-slate-100 mb-2">Creative interests</h3>
+          <p class="font-body text-slate-400 text-sm">Photography, visual storytelling, and building tools that solve real personal problems.</p>
+        </div>
+        <div class="card p-5">
+          <h3 class="font-display font-semibold text-lg text-slate-100 mb-2">Why this site?</h3>
+          <p class="font-body text-slate-400 text-sm">To show not just what I can build — but how I think about building it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="h-line mx-4 sm:mx-8"></div>
+
+<!-- ════════════════════════════════════════ EXPERIENCE ═══════════════════════════════════════════════ -->
+<section id="experience" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+  <div class="reveal mb-12">
+    <div class="section-label mb-4">Background</div>
+    <h2 class="font-display font-bold text-3xl sm:text-4xl text-slate-100">Experience & Education</h2>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+    <!-- Education -->
+    <div class="reveal">
+      <h3 class="font-display font-semibold text-lg text-emerald-400 mb-6 flex items-center gap-3">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        Education
+      </h3>
+      <div class="space-y-8 timeline-line pl-6">
+
+        <div class="relative">
+          <span class="absolute -left-[25px] top-1.5 w-3 h-3 rounded-full border-2 border-emerald-400 bg-slate-950"></span>
+          <p class="font-mono text-xs text-emerald-400 tracking-widest mb-1">2024 — Present</p>
+          <h4 class="font-display font-semibold text-slate-100">B.Sc. Information Technology</h4>
+          <p class="font-mono text-xs text-slate-500 mb-2">Uganda Christian University · Kampala</p>
+          <p class="font-body text-sm text-slate-400 leading-relaxed">Currently in Year 1 — recess semester between first and second year. Coursework spans systems design, database fundamentals, networking, and software development. Already applying classroom concepts through personal projects.</p>
+          <div class="mt-3 flex flex-wrap gap-2">
+            <span class="font-mono text-xs px-2 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Year 1</span>
+            <span class="font-mono text-xs px-2 py-1 rounded-full bg-slate-800 text-slate-400">UCU</span>
+            <span class="font-mono text-xs px-2 py-1 rounded-full bg-slate-800 text-slate-400">IT</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Skills & Tools -->
+    <div class="reveal delay-2">
+      <h3 class="font-display font-semibold text-lg text-emerald-400 mb-6 flex items-center gap-3">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        Tools & Technologies
+      </h3>
+      <div class="space-y-4 pl-0">
+        <div class="card p-4">
+          <p class="font-mono text-xs text-emerald-400 tracking-widest uppercase mb-2">Frontend</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="font-mono text-xs px-2 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">HTML5</span>
+            <span class="font-mono text-xs px-2 py-1 rounded-full bg-slate-800 text-slate-400">CSS3</span>
+            <span class="font-mono text-xs px-2 py-1 rounded-full bg-slate-800 text-slate-400">JavaScript</span>
+            <span class="font-mono text-xs px-2 py-1 rounded-full bg-slate-800 text-slate-400">Tailwind CSS</span>
+          </div>
+        </div>
+        <div class="card p-4">
+          <p class="font-mono text-xs text-emerald-400 tracking-widest uppercase mb-2">Backend & Data</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="font-mono text-xs px-2 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">SQL</span>
+            <span class="font-mono text-xs px-2 py-1 rounded-full bg-slate-800 text-slate-400">Node.js</span>
+            <span class="font-mono text-xs px-2 py-1 rounded-full bg-slate-800 text-slate-400">Express</span>
+            <span class="font-mono text-xs px-2 py-1 rounded-full bg-slate-800 text-slate-400">REST APIs</span>
+          </div>
+        </div>
+        <div class="card p-4">
+          <p class="font-mono text-xs text-emerald-400 tracking-widest uppercase mb-2">Creative</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="font-mono text-xs px-2 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Photography</span>
+            <span class="font-mono text-xs px-2 py-1 rounded-full bg-slate-800 text-slate-400">Visual Composition</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="h-line mx-4 sm:mx-8"></div>
+
+<!-- ═══════════════════════════════════════════════ SKILLS ══════════════════════════════════════════════ -->
+<section id="skills" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+  <div class="reveal mb-12">
+    <div class="section-label mb-4">Technical Pillars</div>
+    <h2 class="font-display font-bold text-3xl sm:text-4xl text-slate-100">Engineering Capabilities</h2>
+  </div>
+ 
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+ 
+    <!-- Skill 1 -->
+    <div class="skill-card reveal delay-1">
+      <div class="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-4">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      </div>
+      <h3 class="font-display font-bold text-lg text-slate-100 mb-2">Web & App Development</h3>
+      <p class="font-body text-sm text-slate-400 leading-relaxed">
+        Building responsive, performant web applications and digital tools from the ground up. Comfortable across the full stack — from crafting clean UIs to wiring backend logic and APIs that hold up under real use.
+      </p>
+      <div class="mt-4 flex flex-wrap gap-2">
+        <span class="font-mono text-xs px-2 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">HTML · CSS · JS</span>
+        <span class="font-mono text-xs px-2 py-1 rounded-full bg-slate-800 text-slate-400">Node.js</span>
+        <span class="font-mono text-xs px-2 py-1 rounded-full bg-slate-800 text-slate-400">REST APIs</span>
+      </div>
+    </div>
+
+    <!-- Skill 2 -->
+    <div class="skill-card reveal delay-2">
+      <div class="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-4">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+      </div>
+      <h3 class="font-display font-bold text-lg text-slate-100 mb-2">SQL & Database Design</h3>
+      <p class="font-body text-sm text-slate-400 leading-relaxed">
+        Designing and querying relational databases with a focus on structure and integrity. Skilled at turning messy data requirements into clean, normalized schemas that make retrieval fast and maintenance easy.
+      </p>
+      <div class="mt-4 flex flex-wrap gap-2">
+        <span class="font-mono text-xs px-2 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">SQL</span>
+        <span class="font-mono text-xs px-2 py-1 rounded-full bg-slate-800 text-slate-400">Schema Design</span>
+        <span class="font-mono text-xs px-2 py-1 rounded-full bg-slate-800 text-slate-400">Normalization</span>
+      </div>
+    </div>
+
+    <!-- Skill 3 -->
+    <div class="skill-card reveal delay-3">
+      <div class="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-4">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.5"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
+      </div>
+      <h3 class="font-display font-bold text-lg text-slate-100 mb-2">Photography & Visual Storytelling</h3>
+      <p class="font-body text-sm text-slate-400 leading-relaxed">
+        Capturing moments with intention — the same principles that drive good engineering apply here too: structure, light, and deliberate framing. Photography sharpens how I see problems, not just scenes.
+      </p>
+      <div class="mt-4 flex flex-wrap gap-2">
+        <span class="font-mono text-xs px-2 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Composition</span>
+        <span class="font-mono text-xs px-2 py-1 rounded-full bg-slate-800 text-slate-400">Visual Design</span>
+        <span class="font-mono text-xs px-2 py-1 rounded-full bg-slate-800 text-slate-400">Storytelling</span>
+      </div>
+    </div>
+ 
+  </div>
+</section>
+ 
+<div class="h-line mx-4 sm:mx-8"></div>
+ 
+<!-- ════════════════════════════════════════════ PROJECTS ═══════════════════════════════════════════════ -->
+<section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+  <div class="reveal mb-12">
+    <div class="section-label mb-4">Selected Projects</div>
+    <h2 class="font-display font-bold text-3xl sm:text-4xl text-slate-100">Featured Work</h2>
+  </div>
+ 
+  <!-- Project Card -->
+  <div class="card p-6 sm:p-8 lg:p-10 reveal">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+ 
+      <!-- Text -->
+      <div class="order-1 lg:order-1">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="font-mono text-xs px-2 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">IoT · Infrastructure · Venture Pitch</span>
+        </div>
+        <h3 class="font-display font-bold text-2xl sm:text-3xl text-slate-100 mb-1 leading-tight">
+          IoT-Based Centralized<br />Biodigester Network
+        </h3>
+        <p class="font-mono text-xs text-emerald-400 mb-5">Smart Infrastructure Blueprint & Venture Pitch</p>
+        <p class="font-body text-slate-400 leading-relaxed mb-6">
+          Designed a comprehensive, centralized IoT network architecture optimized for waste management 
+          and resource tracking in high-density commercial hubs. The system blueprint covers sensor 
+          networks, real-time telemetry pipelines, and centralized monitoring dashboards — deployed 
+          as a proof-of-concept for <span class="text-slate-300">Mukono Market</span>, with a scalable model for rollout across urban markets in East Africa.
+        </p>
+        <ul class="space-y-2 mb-8">
+          <li class="flex items-start gap-2 font-body text-sm text-slate-400"><span class="dot mt-1.5 flex-shrink-0"></span>Real-time IoT telemetry & edge data aggregation</li>
+          <li class="flex items-start gap-2 font-body text-sm text-slate-400"><span class="dot mt-1.5 flex-shrink-0"></span>Centralized control dashboard for multi-node biodigester fleets</li>
+          <li class="flex items-start gap-2 font-body text-sm text-slate-400"><span class="dot mt-1.5 flex-shrink-0"></span>Resource allocation modeling + commercial viability analysis</li>
+        </ul>
+        <div class="flex flex-wrap gap-3">
+          <a href="#" class="btn-primary text-xs py-2 px-4">View Blueprint →</a>
+          <a href="#" class="btn-outline text-xs py-2 px-4">Pitch Deck</a>
+        </div>
+      </div>
+ 
+      <!-- Blueprint Placeholder -->
+      <div class="order-2 lg:order-2">
+        <div class="blueprint-box">
+          <div class="blueprint-grid"></div>
+          <div class="relative z-10 flex flex-col items-center gap-3 text-center px-6">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1" opacity="0.7"><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/><path d="M5.6 5.6l2.1 2.1m8.6 8.6l2.1 2.1M5.6 18.4l2.1-2.1m8.6-8.6l2.1-2.1"/></svg>
+            <p class="font-mono text-xs text-emerald-400/70 tracking-widest uppercase">System Blueprint</p>
+            <p class="font-body text-xs text-slate-600">IoT Network Architecture Diagram<br />[ Replace with project visual ]</p>
+            <div class="mt-2 flex gap-4">
+              <div class="w-16 h-16 rounded-lg border border-emerald-500/20 bg-emerald-500/5 flex items-center justify-center">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.5" opacity="0.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              </div>
+              <div class="w-16 h-16 rounded-lg border border-slate-700 bg-slate-800/50 flex items-center justify-center">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              </div>
+              <div class="w-16 h-16 rounded-lg border border-slate-700 bg-slate-800/50 flex items-center justify-center">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Project 2: Executive Tracker -->
+  <div class="card p-6 sm:p-8 reveal mt-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <div class="order-1">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="font-mono text-xs px-2 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Web App · Node.js · SQL · Personal Project</span>
+        </div>
+        <h3 class="font-display font-bold text-2xl sm:text-3xl text-slate-100 mb-1 leading-tight">
+          Executive Tracker
+        </h3>
+        <p class="font-mono text-xs text-emerald-400 mb-5">Productivity & Behavioral Management Platform</p>
+        <p class="font-body text-slate-400 leading-relaxed mb-6">
+          A personal project born out of a real problem: most productivity tools let you set goals but fail to show whether you're actually hitting them. The Executive Tracker bridges that gap — converting daily habits and routines into structured data you can actually interrogate, so you replace "I think I was productive" with evidence.
+        </p>
+        <ul class="space-y-2 mb-8">
+          <li class="flex items-start gap-2 font-body text-sm text-slate-400"><span class="dot mt-1.5 flex-shrink-0"></span>Quantifies daily habits into measurable performance metrics</li>
+          <li class="flex items-start gap-2 font-body text-sm text-slate-400"><span class="dot mt-1.5 flex-shrink-0"></span>Detects "drift" — deviations from your established routines over time</li>
+          <li class="flex items-start gap-2 font-body text-sm text-slate-400"><span class="dot mt-1.5 flex-shrink-0"></span>SQL-backed data store for timestamped logs and complex performance queries</li>
+          <li class="flex items-start gap-2 font-body text-sm text-slate-400"><span class="dot mt-1.5 flex-shrink-0"></span>Built on Node.js + Express with a clean HTML/CSS/JS frontend</li>
+        </ul>
+        <div class="flex flex-wrap gap-3">
+          <a href="https://github.com/kyebambe-timothy" target="_blank" rel="noopener" class="btn-primary text-xs py-2 px-4">View on GitHub →</a>
+        </div>
+      </div>
+      <div class="order-2">
+        <div class="blueprint-box">
+          <div class="blueprint-grid"></div>
+          <div class="relative z-10 flex flex-col items-center gap-3 text-center px-6">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1" opacity="0.7"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/><path d="M7 6h.01M12 6h.01"/></svg>
+            <p class="font-mono text-xs text-emerald-400/70 tracking-widest uppercase">Dashboard Preview</p>
+            <p class="font-body text-xs text-slate-600">App Screenshot or Demo GIF<br />[ Replace with project visual ]</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<div class="h-line mx-4 sm:mx-8"></div>
+
+<!-- ═══════════════════════════════════════════ INSIGHTS ═══════════════════════════════════════════════ -->
+<section id="insights" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+  <div class="reveal mb-12">
+    <div class="section-label mb-4">Thought Leadership</div>
+    <h2 class="font-display font-bold text-3xl sm:text-4xl text-slate-100">Insights</h2>
+  </div>
+ 
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 reveal">
+ 
+    <!-- Article 1 -->
+    <a href="#" class="card p-6 group block">
+      <div class="font-mono text-xs text-slate-600 mb-3 tracking-widest uppercase">Essay · AI & Technology</div>
+      <h3 class="insight-link text-xl mb-0 border-0 p-0">
+        AI Taught AI Prompting
+        <svg class="w-5 h-5 text-slate-600 group-hover:text-emerald-400 transition-colors flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </h3>
+      <p class="font-body text-sm text-slate-500 mt-3 leading-relaxed">
+        An exploration of recursive intelligence — what happens when a language model becomes the primary instructor for mastering its own interface.
+      </p>
+    </a>
+ 
+    <!-- Article 2 -->
+    <a href="#" class="card p-6 group block">
+      <div class="font-mono text-xs text-slate-600 mb-3 tracking-widest uppercase">Perspective · Personal</div>
+      <h3 class="insight-link text-xl mb-0 border-0 p-0">
+        The Answer is You
+        <svg class="w-5 h-5 text-slate-600 group-hover:text-emerald-400 transition-colors flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </h3>
+      <p class="font-body text-sm text-slate-500 mt-3 leading-relaxed">
+        On agency, accountability, and the uncomfortable realization that most systems are only as good as the human choosing to engage with them.
+      </p>
+    </a>
+ 
+  </div>
+</section>
+ 
+<div class="h-line mx-4 sm:mx-8"></div>
+ 
+<!-- ════════════════════════════════════════ PHOTOGRAPHY ═══════════════════════════════════════════════ -->
+<section id="photography" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+  <div class="reveal mb-4">
+    <div class="section-label mb-4">Creative Corner</div>
+    <h2 class="font-display font-bold text-3xl sm:text-4xl text-slate-100 mb-3">Visual Composition</h2>
+    <p class="font-body text-slate-400 text-base max-w-lg leading-relaxed">
+      A technical mind has a visual eye. These captures reflect the same principles that drive my engineering — 
+      structure, light, and intentional framing.
+    </p>
+  </div>
+ 
+  <!-- 4 image grid: 2x2 on mobile, 4x1 on desktop -->
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 reveal mt-8">
+    <div class="group relative photo-placeholder aspect-square overflow-hidden">
+      <img src="images/photo-1.jpg" alt="Night lights — Kampala" loading="lazy" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3 rounded-lg">
+        <span class="font-mono text-xs text-emerald-400 tracking-widest">Night Lights · Kampala</span>
+      </div>
+    </div>
+    <div class="group relative photo-placeholder aspect-square overflow-hidden">
+      <img src="images/photo-2.jpg" alt="Street geometry" loading="lazy" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3 rounded-lg">
+        <span class="font-mono text-xs text-emerald-400 tracking-widest">Street Geometry</span>
+      </div>
+    </div>
+    <div class="group relative photo-placeholder aspect-square overflow-hidden">
+      <img src="images/photo-3.jpg" alt="Golden hour — nature" loading="lazy" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3 rounded-lg">
+        <span class="font-mono text-xs text-emerald-400 tracking-widest">Golden Hour</span>
+      </div>
+    </div>
+    <div class="group relative photo-placeholder aspect-square overflow-hidden">
+      <img src="images/photo-4.jpg" alt="Self portrait — blue light" loading="lazy" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3 rounded-lg">
+        <span class="font-mono text-xs text-emerald-400 tracking-widest">Self Portrait · Blue Light</span>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<div class="h-line mx-4 sm:mx-8"></div>
+ 
+<!-- ════════════════════════════════════════════ CONTACT ═══════════════════════════════════════════════ -->
+<section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+ 
+  <!-- CTA Header -->
+  <div class="reveal text-center mb-12">
+    <div class="section-label justify-center mb-4 after:hidden">Let's Build Something</div>
+    <h2 class="font-display font-bold text-4xl sm:text-5xl lg:text-6xl text-slate-100 mb-4 leading-tight">
+      Have a complex problem?<br />
+      <span class="text-emerald-400">Let's solve it.</span>
+    </h2>
+    <p class="font-body text-slate-400 text-base max-w-md mx-auto">
+      Whether you're architecting a new system or untangling an existing one — I'm ready to engage.
+    </p>
+  </div>
+ 
+  <!-- Action Buttons -->
+  <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 reveal">
+    <a href="mailto:t.kyebambe.freewill@gmail.com" class="btn-primary w-full sm:w-auto justify-center">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      Email Me
+    </a>
+    <a href="https://linkedin.com/in/timothy-kyebambe-53481b226" target="_blank" rel="noopener" class="btn-outline w-full sm:w-auto justify-center">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      View LinkedIn ↗
+    </a>
+  </div>
+ 
+  <!-- Grid: QR + Form -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+ 
+    <!-- QR Code Hub -->
+    <div class="reveal">
+      <h3 class="font-display font-semibold text-lg text-slate-200 mb-5">Scan to Connect</h3>
+      <div class="flex flex-col sm:flex-row gap-4">
+ 
+        <!-- QR 1 -->
+        <div class="qr-box flex-1">
+          <div class="qr-inner">
+            <!-- QR Code pattern (decorative SVG) -->
+            <svg width="90" height="90" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
+              <rect width="90" height="90" fill="white"/>
+              <!-- Top-left finder -->
+              <rect x="5" y="5" width="25" height="25" fill="black" rx="2"/>
+              <rect x="9" y="9" width="17" height="17" fill="white" rx="1"/>
+              <rect x="12" y="12" width="11" height="11" fill="black" rx="1"/>
+              <!-- Top-right finder -->
+              <rect x="60" y="5" width="25" height="25" fill="black" rx="2"/>
+              <rect x="64" y="9" width="17" height="17" fill="white" rx="1"/>
+              <rect x="67" y="12" width="11" height="11" fill="black" rx="1"/>
+              <!-- Bottom-left finder -->
+              <rect x="5" y="60" width="25" height="25" fill="black" rx="2"/>
+              <rect x="9" y="64" width="17" height="17" fill="white" rx="1"/>
+              <rect x="12" y="67" width="11" height="11" fill="black" rx="1"/>
+              <!-- Data modules -->
+              <rect x="35" y="5" width="5" height="5" fill="black"/>
+              <rect x="45" y="5" width="5" height="5" fill="black"/>
+              <rect x="35" y="15" width="5" height="5" fill="black"/>
+              <rect x="50" y="10" width="5" height="5" fill="black"/>
+              <rect x="35" y="35" width="5" height="5" fill="black"/>
+              <rect x="45" y="35" width="5" height="5" fill="black"/>
+              <rect x="55" y="35" width="5" height="5" fill="black"/>
+              <rect x="40" y="45" width="5" height="5" fill="black"/>
+              <rect x="50" y="45" width="5" height="5" fill="black"/>
+              <rect x="60" y="40" width="5" height="5" fill="black"/>
+              <rect x="35" y="55" width="5" height="5" fill="black"/>
+              <rect x="45" y="60" width="5" height="5" fill="black"/>
+              <rect x="55" y="55" width="5" height="5" fill="black"/>
+              <rect x="60" y="65" width="5" height="5" fill="black"/>
+              <rect x="70" y="55" width="5" height="5" fill="black"/>
+              <rect x="75" y="65" width="5" height="5" fill="black"/>
+              <rect x="65" y="75" width="5" height="5" fill="black"/>
+              <rect x="75" y="75" width="5" height="5" fill="black"/>
+              <rect x="5" y="35" width="5" height="5" fill="black"/>
+              <rect x="15" y="35" width="5" height="5" fill="black"/>
+              <rect x="5" y="45" width="5" height="5" fill="black"/>
+              <rect x="20" y="45" width="5" height="5" fill="black"/>
+              <rect x="5" y="55" width="5" height="5" fill="black"/>
+              <rect x="15" y="55" width="5" height="5" fill="black"/>
+              <rect x="25" y="50" width="5" height="5" fill="black"/>
+            </svg>
+          </div>
+          <div>
+            <p class="font-mono text-xs text-emerald-400 tracking-widest uppercase">VCard</p>
+            <p class="font-body text-xs text-slate-500 mt-1">Scan to Save Contact</p>
+          </div>
+          <p class="font-mono text-xs text-slate-600 italic">[ Replace with your VCard QR ]</p>
+        </div>
+ 
+        <!-- QR 2 -->
+        <div class="qr-box flex-1">
+          <div class="qr-inner">
+            <svg width="90" height="90" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
+              <rect width="90" height="90" fill="white"/>
+              <rect x="5" y="5" width="25" height="25" fill="black" rx="2"/>
+              <rect x="9" y="9" width="17" height="17" fill="white" rx="1"/>
+              <rect x="12" y="12" width="11" height="11" fill="black" rx="1"/>
+              <rect x="60" y="5" width="25" height="25" fill="black" rx="2"/>
+              <rect x="64" y="9" width="17" height="17" fill="white" rx="1"/>
+              <rect x="67" y="12" width="11" height="11" fill="black" rx="1"/>
+              <rect x="5" y="60" width="25" height="25" fill="black" rx="2"/>
+              <rect x="9" y="64" width="17" height="17" fill="white" rx="1"/>
+              <rect x="12" y="67" width="11" height="11" fill="black" rx="1"/>
+              <rect x="35" y="8" width="5" height="5" fill="black"/>
+              <rect x="48" y="5" width="5" height="5" fill="black"/>
+              <rect x="42" y="12" width="5" height="5" fill="black"/>
+              <rect x="35" y="20" width="5" height="5" fill="black"/>
+              <rect x="55" y="35" width="5" height="5" fill="black"/>
+              <rect x="40" y="35" width="5" height="5" fill="black"/>
+              <rect x="35" y="42" width="5" height="5" fill="black"/>
+              <rect x="48" y="40" width="5" height="5" fill="black"/>
+              <rect x="62" y="35" width="5" height="5" fill="black"/>
+              <rect x="70" y="42" width="5" height="5" fill="black"/>
+              <rect x="60" y="50" width="5" height="5" fill="black"/>
+              <rect x="72" y="55" width="5" height="5" fill="black"/>
+              <rect x="55" y="62" width="5" height="5" fill="black"/>
+              <rect x="68" y="68" width="5" height="5" fill="black"/>
+              <rect x="80" y="60" width="5" height="5" fill="black"/>
+              <rect x="38" y="60" width="5" height="5" fill="black"/>
+              <rect x="35" y="72" width="5" height="5" fill="black"/>
+              <rect x="45" y="78" width="5" height="5" fill="black"/>
+              <rect x="5" y="38" width="5" height="5" fill="black"/>
+              <rect x="18" y="35" width="5" height="5" fill="black"/>
+              <rect x="8" y="48" width="5" height="5" fill="black"/>
+              <rect x="22" y="52" width="5" height="5" fill="black"/>
+            </svg>
+          </div>
+          <div>
+            <p class="font-mono text-xs text-emerald-400 tracking-widest uppercase">Portfolio URL</p>
+            <p class="font-body text-xs text-slate-500 mt-1">Scan to Share Website</p>
+          </div>
+          <p class="font-mono text-xs text-slate-600 italic">[ Replace with site URL QR ]</p>
+        </div>
+ 
+      </div>
+    </div>
+ 
+    <!-- Contact Form -->
+    <div class="reveal delay-2">
+      <h3 class="font-display font-semibold text-lg text-slate-200 mb-5">Send a Message</h3>
+      <form id="contact-form" class="space-y-4">
+        <div>
+          <label for="contact-name" class="block font-mono text-xs text-slate-500 tracking-widest uppercase mb-2">Name</label>
+          <input id="contact-name" name="name" type="text" class="form-input" placeholder="Your full name" required />
+        </div>
+        <div>
+          <label for="contact-email" class="block font-mono text-xs text-slate-500 tracking-widest uppercase mb-2">Email</label>
+          <input id="contact-email" name="email" type="email" class="form-input" placeholder="your@email.com" required />
+        </div>
+        <div>
+          <label for="contact-message" class="block font-mono text-xs text-slate-500 tracking-widest uppercase mb-2">Message</label>
+          <textarea id="contact-message" name="message" class="form-input resize-none" rows="4" placeholder="Describe your project or inquiry..." required></textarea>
+        </div>
+        <button type="submit" class="btn-primary w-full justify-center" id="submit-btn" data-fs-submit-btn>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Send Message
+        </button>
+        <div data-fs-success class="hidden font-mono text-xs text-emerald-400 text-center tracking-wide pt-1">✓ Message sent! I'll be in touch shortly.</div>
+        <div data-fs-error class="hidden font-mono text-xs text-red-400 text-center tracking-wide pt-1">Something went wrong. Please email me directly.</div>
+      </form>
+    </div>
+ 
+  </div>
+</section>
+ 
+<!-- ═════════════════════════════════════════════ FOOTER ═══════════════════════════════════════════════ -->
+<footer class="border-t border-slate-800/50 py-8 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+  <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div>
+      <p class="font-display font-bold text-slate-300">Timothy Kyebambe</p>
+      <p class="font-mono text-xs text-slate-600 mt-1">Web & App Developer · Kampala, Uganda</p>
+    </div>
+    <div class="flex items-center gap-6">
+      <a href="mailto:t.kyebambe.freewill@gmail.com" class="nav-link hover:text-emerald-400 transition-colors">Email</a>
+      <a href="https://linkedin.com/in/timothy-kyebambe-53481b226" target="_blank" rel="noopener" class="nav-link hover:text-emerald-400 transition-colors">LinkedIn</a>
+      <a href="https://github.com/timothykyebambe" target="_blank" rel="noopener" class="nav-link hover:text-emerald-400 transition-colors">GitHub</a>
+    </div>
+    <p class="font-mono text-xs text-slate-700">© 2025 Timothy Kyebambe</p>
+  </div>
+</footer>
+ 
+ 
+<!-- ════════════════════════════════════════════ SCRIPTS ═══════════════════════════════════════════════ -->
+<script>
+  // ── Hamburger menu ──────────────────────────────────────────────────────
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
+ 
+  // ── Scroll reveal observer ──────────────────────────────────────────────
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+ 
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+ 
+  // ── Navbar scroll style ─────────────────────────────────────────────────
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      nav.style.background = 'rgba(2,6,23,0.95)';
+    } else {
+      nav.style.background = 'rgba(2,6,23,0.80)';
+    }
+  });
+ 
+  // ── Contact form (Formspree) ─────────────────────────────────────────────
+  window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+  formspree('initForm', { formElement: '#contact-form', formId: 'xdavpbaw' });
+</script>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+ 
+</body>
+</html>
