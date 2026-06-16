@@ -3,19 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Timothy Kyebambe — Systems Engineer & Technical Solutions Architect</title>
+  <title>Timothy Kyebambe (Freewill) — Web & App Developer</title>
   <meta name="description" content="Timothy Kyebambe — Web & App Developer and IT student at Uganda Christian University, Kampala. Building clean, purposeful digital tools." />
   <meta name="author" content="Timothy Kyebambe" />
   <meta name="robots" content="index, follow" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Timothy Kyebambe — Web & App Developer" />
   <meta property="og:description" content="Building web applications, SQL-backed tools, and data-driven products. IT student at UCU, Kampala, Uganda." />
-  <meta property="og:image" content="images/profile.jpg" />
+  <meta property="og:image" content="images/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Timothy Kyebambe — Portfolio" />
-  <meta name="twitter:description" content="Systems Engineer & Technical Solutions Architect based in Kampala, Uganda." />
-  <meta name="twitter:image" content="images/profile.jpg" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%23020617'/><text x='50%' y='58%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='bold' font-size='52' fill='%2334d399'>TK</text></svg>" />
+  <meta name="twitter:description" content="Web & App Developer and IT student in Kampala, Uganda. Clean code, structured data, purposeful design." />
+  <meta name="twitter:image" content="images/og-image.png" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%23020617'/><text x='50%' y='58%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='bold' font-size='56' fill='%2334d399'>F</text></svg>" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -70,6 +72,8 @@
     :root {
       --emerald: #34d399;
       --emerald-dim: #10b981;
+      --amber: #fbbf24;
+      --amber-dim: #f59e0b;
       --bg-deep: #020617;
       --bg-card: #0f172a;
       --bg-border: #1e293b;
@@ -140,6 +144,22 @@
       0%, 100% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
     }
+
+    /* Entrance animations referenced by inline styles (hero, etc.) */
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(32px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    @keyframes slideRight {
+      0% { opacity: 0; transform: translateX(-32px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+    /* Safety net: if animations never run, content still becomes visible */
+    .no-anim-fallback { opacity: 1 !important; }
  
     /* Section label */
     .section-label {
@@ -390,23 +410,190 @@
       width: 1px;
       background: #1e293b;
     }
+
+    /* Hero greeting */
+    .hero-hello {
+      font-family: 'DM Mono', monospace;
+      color: var(--amber);
+      letter-spacing: 0.05em;
+    }
+    .gradient-text-warm {
+      background: linear-gradient(135deg, #e2e8f0 0%, var(--amber) 55%, #e2e8f0 100%);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Status badges */
+    .badge-amber {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      padding: 0.25rem 0.6rem;
+      border-radius: 9999px;
+      background: rgba(251,191,36,0.12);
+      color: var(--amber);
+      border: 1px solid rgba(251,191,36,0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .badge-amber .pulse-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--amber);
+      animation: pulseDot 2s ease-in-out infinite;
+    }
+    @keyframes pulseDot { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+    /* Project visual frame */
+    .visual-frame {
+      border: 1px solid var(--bg-border);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--bg-card);
+      cursor: zoom-in;
+      transition: border-color 0.25s ease, transform 0.25s ease;
+    }
+    .visual-frame:hover { border-color: var(--amber-dim); transform: translateY(-3px); }
+    .visual-frame img { width: 100%; display: block; }
+
+    /* Perspectives (Medium) cards */
+    .perspective-card { display: block; }
+    .perspective-card .read-on {
+      color: var(--amber);
+      opacity: 0.85;
+      transition: opacity 0.2s ease, gap 0.2s ease;
+    }
+    .perspective-card:hover .read-on { opacity: 1; }
+    .perspective-card:hover { border-color: var(--emerald-dim); }
+
+    /* Digital contact card */
+    .vcard {
+      background: var(--bg-card);
+      border: 1px solid var(--bg-border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      transition: border-color 0.25s ease;
+    }
+    .vcard:hover { border-color: var(--emerald-dim); }
+    .vcard-photo {
+      width: 72px; height: 72px; border-radius: 50%;
+      object-fit: cover; border: 2px solid var(--emerald-dim);
+    }
+    #qrcode { background: #fff; padding: 8px; border-radius: 10px; line-height: 0; }
+    #qrcode img, #qrcode canvas { display: block; }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 10000;
+      background: rgba(2,6,23,0.92);
+      display: none; align-items: center; justify-content: center;
+      padding: 1.5rem;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 92vw; max-height: 82vh; border-radius: 10px; }
+    .lb-btn {
+      position: absolute; background: rgba(15,23,42,0.8);
+      border: 1px solid var(--bg-border); color: #e2e8f0;
+      width: 44px; height: 44px; border-radius: 50%;
+      font-size: 1.3rem; cursor: pointer; display: flex;
+      align-items: center; justify-content: center;
+      transition: border-color 0.2s ease;
+    }
+    .lb-btn:hover { border-color: var(--emerald); }
+    .lb-prev { left: 1rem; } .lb-next { right: 1rem; } .lb-close { top: 1rem; right: 1rem; }
+    .lb-caption {
+      position: absolute; bottom: 1.25rem; left: 0; right: 0; text-align: center;
+      font-family: 'DM Mono', monospace; font-size: 0.8rem; color: var(--emerald);
+      letter-spacing: 0.1em;
+    }
+
+    /* Rotating footer message */
+    .freewill-line {
+      font-family: 'Inter', sans-serif; font-style: italic;
+      color: #64748b; font-size: 0.8rem;
+      transition: opacity 0.8s ease;
+    }
+
+    /* Gallery: staggered entrance + smooth image zoom */
+    .photo-placeholder img { transition: transform 0.6s cubic-bezier(0.22,1,0.36,1); }
+    .photo-placeholder:hover img { transform: scale(1.09); }
+    .gallery-grid.visible .lb-item { animation: galleryPop 0.6s cubic-bezier(0.22,1,0.36,1) backwards; }
+    .gallery-grid.visible .lb-item:nth-child(1){ animation-delay: 0.04s; }
+    .gallery-grid.visible .lb-item:nth-child(2){ animation-delay: 0.09s; }
+    .gallery-grid.visible .lb-item:nth-child(3){ animation-delay: 0.14s; }
+    .gallery-grid.visible .lb-item:nth-child(4){ animation-delay: 0.19s; }
+    .gallery-grid.visible .lb-item:nth-child(5){ animation-delay: 0.24s; }
+    .gallery-grid.visible .lb-item:nth-child(6){ animation-delay: 0.29s; }
+    .gallery-grid.visible .lb-item:nth-child(7){ animation-delay: 0.34s; }
+    .gallery-grid.visible .lb-item:nth-child(8){ animation-delay: 0.39s; }
+    @keyframes galleryPop {
+      0% { opacity: 0; transform: translateY(18px) scale(0.96); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* Typing caret */
+    .type-caret { animation: blink 1s step-end infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* Scroll progress bar */
+    #progress-bar {
+      position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+      background: linear-gradient(to right, var(--emerald), var(--amber));
+      z-index: 10001; transition: width 0.1s linear;
+    }
+
+    /* Active nav link */
+    .nav-link.active { color: var(--emerald); }
+
+    /* Back to top */
+    #to-top {
+      position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 9998;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--emerald); color: #020617;
+      display: flex; align-items: center; justify-content: center;
+      border: none; cursor: pointer; opacity: 0; pointer-events: none;
+      transform: translateY(12px);
+      transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.2s ease;
+      box-shadow: 0 6px 20px rgba(52,211,153,0.3);
+    }
+    #to-top.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    #to-top:hover { box-shadow: 0 8px 28px rgba(52,211,153,0.45); }
+
+    /* Reduced motion: keep everything visible & still */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+      }
+      .hero-tag, .hero-title, .hero-hello,
+      [style*="fadeUp"], [style*="fadeIn"], [style*="animation"] {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      .reveal { opacity: 1 !important; transform: none !important; }
+    }
   </style>
 </head>
 <body>
+<div id="progress-bar"></div>
  
 <!-- ═══════════════════════════════════════════════ NAV ═════════════════════════════════════════════════ -->
 <nav class="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/50">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-14">
       <!-- Logo -->
-      <a href="#" class="font-display font-bold text-sm tracking-tight text-emerald-400">TK<span class="text-slate-400">.</span></a>
+      <a href="#" class="font-display font-bold text-base tracking-tight"><span class="text-emerald-400">Free</span><span class="text-amber-400">will</span></a>
  
       <!-- Desktop Nav -->
       <div class="hidden md:flex items-center gap-8">
         <a href="#experience" class="nav-link">Experience</a>
         <a href="#skills" class="nav-link">Skills</a>
         <a href="#projects" class="nav-link">Projects</a>
-        <a href="#insights" class="nav-link">Insights</a>
+        <a href="#insights" class="nav-link">Perspectives</a>
         <a href="#photography" class="nav-link">Photography</a>
         <a href="#contact" class="nav-link">Contact</a>
       </div>
@@ -430,7 +617,7 @@
     <a href="#experience" class="nav-link py-2">Experience</a>
     <a href="#skills" class="nav-link py-2">Skills</a>
     <a href="#projects" class="nav-link py-2">Projects</a>
-    <a href="#insights" class="nav-link py-2">Insights</a>
+    <a href="#insights" class="nav-link py-2">Perspectives</a>
     <a href="#photography" class="nav-link py-2">Photography</a>
     <a href="#contact" class="nav-link py-2">Contact</a>
     <a href="mailto:t.kyebambe.freewill@gmail.com" class="btn-primary w-fit text-xs py-2 px-4 mt-2">↗ Get in Touch</a>
@@ -442,6 +629,7 @@
  
   <!-- Background glow -->
   <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-emerald-500/5 blur-[120px] pointer-events-none"></div>
+  <div class="absolute bottom-1/4 right-1/4 w-[420px] h-[420px] rounded-full bg-amber-500/5 blur-[120px] pointer-events-none"></div>
  
   <div class="relative z-10">
     <!-- Tag line -->
@@ -449,17 +637,23 @@
       <span class="dot mr-2"></span>Open to opportunities · Kampala, Uganda
     </div>
  
+    <!-- Greeting -->
+    <p class="hero-hello text-base sm:text-lg mb-3 opacity-0" style="animation: fadeUp 0.7s ease 0.2s forwards;">Hey there 👋 I'm</p>
+
     <!-- Main title -->
     <h1 class="hero-title text-5xl sm:text-7xl lg:text-8xl xl:text-9xl mb-6 opacity-0" style="animation: fadeUp 0.8s ease 0.3s forwards;">
       <span class="gradient-text">Timothy</span><br />
       <span class="text-slate-300">Kyebambe</span>
     </h1>
  
-    <!-- Subtitle -->
+    <!-- Subtitle: typed role rotator (signature) -->
     <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 mb-8 opacity-0" style="animation: fadeUp 0.8s ease 0.5s forwards;">
-      <span class="font-mono text-xs tracking-widest text-slate-400 uppercase">Web & App Developer</span>
+      <span class="font-mono text-sm sm:text-base tracking-widest uppercase">
+        <span class="text-slate-500">I build</span>
+        <span id="typed-role" class="text-emerald-400"></span><span class="type-caret text-amber-400">▍</span>
+      </span>
       <span class="hidden sm:block w-8 h-px bg-emerald-500/50"></span>
-      <span class="font-mono text-xs tracking-widest text-emerald-400/80 uppercase">IT Student · UCU</span>
+      <span class="font-mono text-xs tracking-widest text-slate-400 uppercase">IT Student · UCU</span>
     </div>
  
     <!-- Description -->
@@ -542,7 +736,7 @@
 
         <div class="relative">
           <span class="absolute -left-[25px] top-1.5 w-3 h-3 rounded-full border-2 border-emerald-400 bg-slate-950"></span>
-          <p class="font-mono text-xs text-emerald-400 tracking-widest mb-1">2024 — Present</p>
+          <p class="font-mono text-xs text-emerald-400 tracking-widest mb-1">Current Student</p>
           <h4 class="font-display font-semibold text-slate-100">B.Sc. Information Technology</h4>
           <p class="font-mono text-xs text-slate-500 mb-2">Uganda Christian University · Kampala</p>
           <p class="font-body text-sm text-slate-400 leading-relaxed">Currently in Year 1 — recess semester between first and second year. Coursework spans systems design, database fundamentals, networking, and software development. Already applying classroom concepts through personal projects.</p>
@@ -668,54 +862,47 @@
   <!-- Project Card -->
   <div class="card p-6 sm:p-8 lg:p-10 reveal">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
- 
+
       <!-- Text -->
-      <div class="order-1 lg:order-1">
-        <div class="flex items-center gap-3 mb-4">
+      <div class="order-2 lg:order-1">
+        <div class="flex flex-wrap items-center gap-3 mb-4">
           <span class="font-mono text-xs px-2 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">IoT · Infrastructure · Venture Pitch</span>
+          <span class="badge-amber"><span class="pulse-dot"></span>In Iteration · Phase 1</span>
         </div>
         <h3 class="font-display font-bold text-2xl sm:text-3xl text-slate-100 mb-1 leading-tight">
-          IoT-Based Centralized<br />Biodigester Network
+          DigestiNet — IoT<br />Biodigester Network
         </h3>
-        <p class="font-mono text-xs text-emerald-400 mb-5">Smart Infrastructure Blueprint & Venture Pitch</p>
+        <p class="font-mono text-xs text-emerald-400 mb-5">Centralized smart-waste infrastructure · Co-founder &amp; Systems Design</p>
         <p class="font-body text-slate-400 leading-relaxed mb-6">
-          Designed a comprehensive, centralized IoT network architecture optimized for waste management 
-          and resource tracking in high-density commercial hubs. The system blueprint covers sensor 
-          networks, real-time telemetry pipelines, and centralized monitoring dashboards — deployed 
-          as a proof-of-concept for <span class="text-slate-300">Mukono Market</span>, with a scalable model for rollout across urban markets in East Africa.
+          A centralized IoT network that turns organic market waste into clean biogas and bio-fertilizer, with real-time telemetry across every digester node. Designed as a proof-of-concept for <span class="text-slate-300">Mukono Market</span>, with a scaling model for high-density commercial hubs across East Africa.
         </p>
-        <ul class="space-y-2 mb-8">
-          <li class="flex items-start gap-2 font-body text-sm text-slate-400"><span class="dot mt-1.5 flex-shrink-0"></span>Real-time IoT telemetry & edge data aggregation</li>
-          <li class="flex items-start gap-2 font-body text-sm text-slate-400"><span class="dot mt-1.5 flex-shrink-0"></span>Centralized control dashboard for multi-node biodigester fleets</li>
-          <li class="flex items-start gap-2 font-body text-sm text-slate-400"><span class="dot mt-1.5 flex-shrink-0"></span>Resource allocation modeling + commercial viability analysis</li>
+        <ul class="space-y-2 mb-6">
+          <li class="flex items-start gap-2 font-body text-sm text-slate-400"><span class="dot mt-1.5 flex-shrink-0"></span>Sensor network + real-time telemetry across digester nodes</li>
+          <li class="flex items-start gap-2 font-body text-sm text-slate-400"><span class="dot mt-1.5 flex-shrink-0"></span>Centralized dashboards for technicians and the community</li>
+          <li class="flex items-start gap-2 font-body text-sm text-slate-400"><span class="dot mt-1.5 flex-shrink-0"></span>Problem-tree analysis, revenue model, and rollout roadmap</li>
         </ul>
-        <div class="flex flex-wrap gap-3">
-          <a href="#" class="btn-primary text-xs py-2 px-4">View Blueprint →</a>
-          <a href="#" class="btn-outline text-xs py-2 px-4">Pitch Deck</a>
+        <div class="rounded-lg border border-amber-500/20 bg-amber-500/5 p-4">
+          <p class="font-mono text-xs text-amber-400 tracking-widest uppercase mb-1">Learning &amp; iteration</p>
+          <p class="font-body text-sm text-slate-400 leading-relaxed">
+            First-round stakeholders found the architecture hard to read, so the current cycle is focused on simplifying the telemetry into plain, accessible insight for non-technical market vendors. Phase 2 pitch lands at the end of this recess semester.
+          </p>
         </div>
       </div>
- 
-      <!-- Blueprint Placeholder -->
-      <div class="order-2 lg:order-2">
-        <div class="blueprint-box">
-          <div class="blueprint-grid"></div>
-          <div class="relative z-10 flex flex-col items-center gap-3 text-center px-6">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1" opacity="0.7"><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/><path d="M5.6 5.6l2.1 2.1m8.6 8.6l2.1 2.1M5.6 18.4l2.1-2.1m8.6-8.6l2.1-2.1"/></svg>
-            <p class="font-mono text-xs text-emerald-400/70 tracking-widest uppercase">System Blueprint</p>
-            <p class="font-body text-xs text-slate-600">IoT Network Architecture Diagram<br />[ Replace with project visual ]</p>
-            <div class="mt-2 flex gap-4">
-              <div class="w-16 h-16 rounded-lg border border-emerald-500/20 bg-emerald-500/5 flex items-center justify-center">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.5" opacity="0.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-              </div>
-              <div class="w-16 h-16 rounded-lg border border-slate-700 bg-slate-800/50 flex items-center justify-center">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-              </div>
-              <div class="w-16 h-16 rounded-lg border border-slate-700 bg-slate-800/50 flex items-center justify-center">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/></svg>
-              </div>
-            </div>
+
+      <!-- Real pitch-deck visuals -->
+      <div class="order-1 lg:order-2">
+        <div class="visual-frame mb-3" data-lb-src="images/digestinet-cover.jpg" data-lb-cap="DigestiNet · Venture Pitch Cover">
+          <img src="images/digestinet-cover.jpg" alt="DigestiNet pitch cover — biodigester network" loading="lazy" />
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div class="visual-frame" data-lb-src="images/digestinet-flow.jpg" data-lb-cap="How It Works · 5-stage process">
+            <img src="images/digestinet-flow.jpg" alt="DigestiNet how it works flow" loading="lazy" />
+          </div>
+          <div class="visual-frame" data-lb-src="images/digestinet-app.jpg" data-lb-cap="Projected Community Dashboard">
+            <img src="images/digestinet-app.jpg" alt="DigestiNet projected community dashboard UI" loading="lazy" />
           </div>
         </div>
+        <p class="font-mono text-[0.65rem] text-slate-600 text-center mt-2 tracking-widest uppercase">Tap any visual to enlarge</p>
       </div>
 
     </div>
@@ -725,33 +912,32 @@
   <div class="card p-6 sm:p-8 reveal mt-6">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
       <div class="order-1">
-        <div class="flex items-center gap-3 mb-4">
-          <span class="font-mono text-xs px-2 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Web App · Node.js · SQL · Personal Project</span>
+        <div class="flex flex-wrap items-center gap-3 mb-4">
+          <span class="font-mono text-xs px-2 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Web App · React · Supabase · Personal Project</span>
+          <span class="badge-amber"><span class="pulse-dot"></span>In Development</span>
         </div>
         <h3 class="font-display font-bold text-2xl sm:text-3xl text-slate-100 mb-1 leading-tight">
           Executive Tracker
         </h3>
-        <p class="font-mono text-xs text-emerald-400 mb-5">Productivity & Behavioral Management Platform</p>
+        <p class="font-mono text-xs text-emerald-400 mb-5">Productivity &amp; Behavioral Management Platform</p>
         <p class="font-body text-slate-400 leading-relaxed mb-6">
           A personal project born out of a real problem: most productivity tools let you set goals but fail to show whether you're actually hitting them. The Executive Tracker bridges that gap — converting daily habits and routines into structured data you can actually interrogate, so you replace "I think I was productive" with evidence.
         </p>
-        <ul class="space-y-2 mb-8">
+        <ul class="space-y-2">
           <li class="flex items-start gap-2 font-body text-sm text-slate-400"><span class="dot mt-1.5 flex-shrink-0"></span>Quantifies daily habits into measurable performance metrics</li>
           <li class="flex items-start gap-2 font-body text-sm text-slate-400"><span class="dot mt-1.5 flex-shrink-0"></span>Detects "drift" — deviations from your established routines over time</li>
-          <li class="flex items-start gap-2 font-body text-sm text-slate-400"><span class="dot mt-1.5 flex-shrink-0"></span>SQL-backed data store for timestamped logs and complex performance queries</li>
-          <li class="flex items-start gap-2 font-body text-sm text-slate-400"><span class="dot mt-1.5 flex-shrink-0"></span>Built on Node.js + Express with a clean HTML/CSS/JS frontend</li>
+          <li class="flex items-start gap-2 font-body text-sm text-slate-400"><span class="dot mt-1.5 flex-shrink-0"></span>Postgres data store via Supabase, with row-level security and JWT auth</li>
+          <li class="flex items-start gap-2 font-body text-sm text-slate-400"><span class="dot mt-1.5 flex-shrink-0"></span>React + Vite + Tailwind front end, querying Supabase directly from the client</li>
         </ul>
-        <div class="flex flex-wrap gap-3">
-          <a href="https://github.com/kyebambe-timothy" target="_blank" rel="noopener" class="btn-primary text-xs py-2 px-4">View on GitHub →</a>
-        </div>
       </div>
       <div class="order-2">
-        <div class="blueprint-box">
-          <div class="blueprint-grid"></div>
-          <div class="relative z-10 flex flex-col items-center gap-3 text-center px-6">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1" opacity="0.7"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/><path d="M7 6h.01M12 6h.01"/></svg>
-            <p class="font-mono text-xs text-emerald-400/70 tracking-widest uppercase">Dashboard Preview</p>
-            <p class="font-body text-xs text-slate-600">App Screenshot or Demo GIF<br />[ Replace with project visual ]</p>
+        <div class="rounded-xl border border-slate-800 bg-slate-900/40 min-h-[240px] flex flex-col items-center justify-center gap-3 text-center px-6 py-10">
+          <span class="badge-amber"><span class="pulse-dot"></span>Building in progress</span>
+          <p class="font-body text-sm text-slate-500 max-w-xs leading-relaxed">The interface is still being built — a live demo and screenshots land here once it's ready to show properly.</p>
+          <div class="flex gap-2 mt-1">
+            <span class="font-mono text-[0.65rem] px-2 py-1 rounded-full bg-slate-800 text-slate-500">React</span>
+            <span class="font-mono text-[0.65rem] px-2 py-1 rounded-full bg-slate-800 text-slate-500">Supabase</span>
+            <span class="font-mono text-[0.65rem] px-2 py-1 rounded-full bg-slate-800 text-slate-500">Tailwind</span>
           </div>
         </div>
       </div>
@@ -765,36 +951,67 @@
 <!-- ═══════════════════════════════════════════ INSIGHTS ═══════════════════════════════════════════════ -->
 <section id="insights" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
   <div class="reveal mb-12">
-    <div class="section-label mb-4">Thought Leadership</div>
-    <h2 class="font-display font-bold text-3xl sm:text-4xl text-slate-100">Insights</h2>
+    <div class="section-label mb-4">Writing &amp; Ideas</div>
+    <h2 class="font-display font-bold text-3xl sm:text-4xl text-slate-100">Perspectives</h2>
+    <p class="font-body text-slate-400 text-base max-w-lg leading-relaxed mt-3">
+      Where systems thinking meets mindset. Essays on AI, building, and taking ownership of how you operate — published on Medium.
+    </p>
   </div>
- 
+
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 reveal">
- 
+
     <!-- Article 1 -->
-    <a href="#" class="card p-6 group block">
-      <div class="font-mono text-xs text-slate-600 mb-3 tracking-widest uppercase">Essay · AI & Technology</div>
-      <h3 class="insight-link text-xl mb-0 border-0 p-0">
-        AI Taught AI Prompting
-        <svg class="w-5 h-5 text-slate-600 group-hover:text-emerald-400 transition-colors flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-      </h3>
-      <p class="font-body text-sm text-slate-500 mt-3 leading-relaxed">
-        An exploration of recursive intelligence — what happens when a language model becomes the primary instructor for mastering its own interface.
-      </p>
+    <a href="https://medium.com/@tkyebambe/the-prompting-era-is-dead-why-you-need-to-let-ai-talk-to-itself-99af89316499" target="_blank" rel="noopener" class="card perspective-card p-6 group">
+      <div class="flex items-center justify-between mb-3">
+        <span class="font-mono text-xs text-emerald-400 tracking-widest uppercase">AI &amp; Systems</span>
+        <span class="font-mono text-[0.65rem] text-slate-600">5 min read</span>
+      </div>
+      <h3 class="font-display font-semibold text-xl text-slate-100 leading-snug mb-3">The Prompting Era is Dead</h3>
+      <p class="font-body text-sm text-slate-500 leading-relaxed mb-4">Why the next leap isn't better prompts — it's letting AI talk to itself, and what that means for how we build.</p>
+      <span class="read-on font-mono text-xs inline-flex items-center gap-1.5">Read on Medium
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </span>
     </a>
- 
+
     <!-- Article 2 -->
-    <a href="#" class="card p-6 group block">
-      <div class="font-mono text-xs text-slate-600 mb-3 tracking-widest uppercase">Perspective · Personal</div>
-      <h3 class="insight-link text-xl mb-0 border-0 p-0">
-        The Answer is You
-        <svg class="w-5 h-5 text-slate-600 group-hover:text-emerald-400 transition-colors flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-      </h3>
-      <p class="font-body text-sm text-slate-500 mt-3 leading-relaxed">
-        On agency, accountability, and the uncomfortable realization that most systems are only as good as the human choosing to engage with them.
-      </p>
+    <a href="https://medium.com/@tkyebambe/systems-over-stories-how-to-build-the-infrastructure-for-a-billion-dollar-future-48ba84a18d5a" target="_blank" rel="noopener" class="card perspective-card p-6 group">
+      <div class="flex items-center justify-between mb-3">
+        <span class="font-mono text-xs text-emerald-400 tracking-widest uppercase">Building</span>
+        <span class="font-mono text-[0.65rem] text-slate-600">6 min read</span>
+      </div>
+      <h3 class="font-display font-semibold text-xl text-slate-100 leading-snug mb-3">Systems Over Stories</h3>
+      <p class="font-body text-sm text-slate-500 leading-relaxed mb-4">How to build the infrastructure for a billion-dollar future — and why the system you design outlasts the story you tell.</p>
+      <span class="read-on font-mono text-xs inline-flex items-center gap-1.5">Read on Medium
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </span>
     </a>
- 
+
+    <!-- Article 3 -->
+    <a href="https://medium.com/@tkyebambe/your-mind-is-running-a-program-you-didnt-write-here-s-how-to-take-back-the-code-f060d1edf0ff" target="_blank" rel="noopener" class="card perspective-card p-6 group">
+      <div class="flex items-center justify-between mb-3">
+        <span class="font-mono text-xs text-emerald-400 tracking-widest uppercase">Mindset</span>
+        <span class="font-mono text-[0.65rem] text-slate-600">7 min read</span>
+      </div>
+      <h3 class="font-display font-semibold text-xl text-slate-100 leading-snug mb-3">Your Mind is Running a Program You Didn't Write</h3>
+      <p class="font-body text-sm text-slate-500 leading-relaxed mb-4">Here's how to take back the code — a developer's take on rewriting the beliefs running quietly in the background.</p>
+      <span class="read-on font-mono text-xs inline-flex items-center gap-1.5">Read on Medium
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </span>
+    </a>
+
+    <!-- Article 4 -->
+    <a href="https://medium.com/@tkyebambe/debugging-the-session-why-your-communication-keeps-dropping-packets-696f5886d4cc" target="_blank" rel="noopener" class="card perspective-card p-6 group">
+      <div class="flex items-center justify-between mb-3">
+        <span class="font-mono text-xs text-emerald-400 tracking-widest uppercase">Communication</span>
+        <span class="font-mono text-[0.65rem] text-slate-600">5 min read</span>
+      </div>
+      <h3 class="font-display font-semibold text-xl text-slate-100 leading-snug mb-3">Debugging the Session</h3>
+      <p class="font-body text-sm text-slate-500 leading-relaxed mb-4">Why your communication keeps dropping packets — and how to keep the connection alive when it matters most.</p>
+      <span class="read-on font-mono text-xs inline-flex items-center gap-1.5">Read on Medium
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </span>
+    </a>
+
   </div>
 </section>
  
@@ -811,33 +1028,58 @@
     </p>
   </div>
  
-  <!-- 4 image grid: 2x2 on mobile, 4x1 on desktop -->
-  <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 reveal mt-8">
-    <div class="group relative photo-placeholder aspect-square overflow-hidden">
-      <img src="images/photo-1.jpg" alt="Night lights — Kampala" loading="lazy" class="w-full h-full object-cover" />
+  <!-- 8 image grid with lightbox -->
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 reveal gallery-grid mt-8">
+    <div class="group relative photo-placeholder aspect-square overflow-hidden cursor-zoom-in lb-item" data-lb-src="images/photo-5.jpg" data-lb-cap="Sorghum at Sunset">
+      <img src="images/photo-5.jpg" alt="Sorghum silhouetted at golden hour" loading="lazy" class="w-full h-full object-cover" />
       <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3 rounded-lg">
-        <span class="font-mono text-xs text-emerald-400 tracking-widest">Night Lights · Kampala</span>
+        <span class="font-mono text-xs text-emerald-400 tracking-widest">Sorghum at Sunset</span>
       </div>
     </div>
-    <div class="group relative photo-placeholder aspect-square overflow-hidden">
-      <img src="images/photo-2.jpg" alt="Street geometry" loading="lazy" class="w-full h-full object-cover" />
-      <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3 rounded-lg">
-        <span class="font-mono text-xs text-emerald-400 tracking-widest">Street Geometry</span>
-      </div>
-    </div>
-    <div class="group relative photo-placeholder aspect-square overflow-hidden">
-      <img src="images/photo-3.jpg" alt="Golden hour — nature" loading="lazy" class="w-full h-full object-cover" />
-      <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3 rounded-lg">
-        <span class="font-mono text-xs text-emerald-400 tracking-widest">Golden Hour</span>
-      </div>
-    </div>
-    <div class="group relative photo-placeholder aspect-square overflow-hidden">
-      <img src="images/photo-4.jpg" alt="Self portrait — blue light" loading="lazy" class="w-full h-full object-cover" />
+    <div class="group relative photo-placeholder aspect-square overflow-hidden cursor-zoom-in lb-item" data-lb-src="images/photo-4.jpg" data-lb-cap="Self Portrait · Blue Light">
+      <img src="images/photo-4.jpg" alt="Self portrait under blue light" loading="lazy" class="w-full h-full object-cover" />
       <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3 rounded-lg">
         <span class="font-mono text-xs text-emerald-400 tracking-widest">Self Portrait · Blue Light</span>
       </div>
     </div>
+    <div class="group relative photo-placeholder aspect-square overflow-hidden cursor-zoom-in lb-item" data-lb-src="images/photo-2.jpg" data-lb-cap="Street Geometry">
+      <img src="images/photo-2.jpg" alt="Street sign geometry" loading="lazy" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3 rounded-lg">
+        <span class="font-mono text-xs text-emerald-400 tracking-widest">Street Geometry</span>
+      </div>
+    </div>
+    <div class="group relative photo-placeholder aspect-square overflow-hidden cursor-zoom-in lb-item" data-lb-src="images/photo-3.jpg" data-lb-cap="Held to the Light">
+      <img src="images/photo-3.jpg" alt="Hands held to the sun" loading="lazy" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3 rounded-lg">
+        <span class="font-mono text-xs text-emerald-400 tracking-widest">Held to the Light</span>
+      </div>
+    </div>
+    <div class="group relative photo-placeholder aspect-square overflow-hidden cursor-zoom-in lb-item" data-lb-src="images/photo-6.jpg" data-lb-cap="Beneath the Surface">
+      <img src="images/photo-6.jpg" alt="Betta fish beneath the surface" loading="lazy" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3 rounded-lg">
+        <span class="font-mono text-xs text-emerald-400 tracking-widest">Beneath the Surface</span>
+      </div>
+    </div>
+    <div class="group relative photo-placeholder aspect-square overflow-hidden cursor-zoom-in lb-item" data-lb-src="images/photo-7.jpg" data-lb-cap="Forged">
+      <img src="images/photo-7.jpg" alt="Sculpture forged from metal" loading="lazy" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3 rounded-lg">
+        <span class="font-mono text-xs text-emerald-400 tracking-widest">Forged</span>
+      </div>
+    </div>
+    <div class="group relative photo-placeholder aspect-square overflow-hidden cursor-zoom-in lb-item" data-lb-src="images/photo-1.jpg" data-lb-cap="Night Lights · Kampala">
+      <img src="images/photo-1.jpg" alt="Night lights in Kampala" loading="lazy" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3 rounded-lg">
+        <span class="font-mono text-xs text-emerald-400 tracking-widest">Night Lights · Kampala</span>
+      </div>
+    </div>
+    <div class="group relative photo-placeholder aspect-square overflow-hidden cursor-zoom-in lb-item" data-lb-src="images/photo-8.jpg" data-lb-cap="Elements">
+      <img src="images/photo-8.jpg" alt="Sky and water spray" loading="lazy" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-slate-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3 rounded-lg">
+        <span class="font-mono text-xs text-emerald-400 tracking-widest">Elements</span>
+      </div>
+    </div>
   </div>
+  <p class="font-mono text-[0.65rem] text-slate-600 text-center mt-4 tracking-widest uppercase">Tap any photo to view full size</p>
 </section>
  
 <div class="h-line mx-4 sm:mx-8"></div>
@@ -853,7 +1095,7 @@
       <span class="text-emerald-400">Let's solve it.</span>
     </h2>
     <p class="font-body text-slate-400 text-base max-w-md mx-auto">
-      Whether you're architecting a new system or untangling an existing one — I'm ready to engage.
+      Got an idea, a project, or just want to talk shop? Whether it's a website, an app, or a data problem — I'd love to hear about it.
     </p>
   </div>
  
@@ -872,109 +1114,47 @@
   <!-- Grid: QR + Form -->
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
  
-    <!-- QR Code Hub -->
+    <!-- Digital contact card -->
     <div class="reveal">
-      <h3 class="font-display font-semibold text-lg text-slate-200 mb-5">Scan to Connect</h3>
-      <div class="flex flex-col sm:flex-row gap-4">
- 
-        <!-- QR 1 -->
-        <div class="qr-box flex-1">
-          <div class="qr-inner">
-            <!-- QR Code pattern (decorative SVG) -->
-            <svg width="90" height="90" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
-              <rect width="90" height="90" fill="white"/>
-              <!-- Top-left finder -->
-              <rect x="5" y="5" width="25" height="25" fill="black" rx="2"/>
-              <rect x="9" y="9" width="17" height="17" fill="white" rx="1"/>
-              <rect x="12" y="12" width="11" height="11" fill="black" rx="1"/>
-              <!-- Top-right finder -->
-              <rect x="60" y="5" width="25" height="25" fill="black" rx="2"/>
-              <rect x="64" y="9" width="17" height="17" fill="white" rx="1"/>
-              <rect x="67" y="12" width="11" height="11" fill="black" rx="1"/>
-              <!-- Bottom-left finder -->
-              <rect x="5" y="60" width="25" height="25" fill="black" rx="2"/>
-              <rect x="9" y="64" width="17" height="17" fill="white" rx="1"/>
-              <rect x="12" y="67" width="11" height="11" fill="black" rx="1"/>
-              <!-- Data modules -->
-              <rect x="35" y="5" width="5" height="5" fill="black"/>
-              <rect x="45" y="5" width="5" height="5" fill="black"/>
-              <rect x="35" y="15" width="5" height="5" fill="black"/>
-              <rect x="50" y="10" width="5" height="5" fill="black"/>
-              <rect x="35" y="35" width="5" height="5" fill="black"/>
-              <rect x="45" y="35" width="5" height="5" fill="black"/>
-              <rect x="55" y="35" width="5" height="5" fill="black"/>
-              <rect x="40" y="45" width="5" height="5" fill="black"/>
-              <rect x="50" y="45" width="5" height="5" fill="black"/>
-              <rect x="60" y="40" width="5" height="5" fill="black"/>
-              <rect x="35" y="55" width="5" height="5" fill="black"/>
-              <rect x="45" y="60" width="5" height="5" fill="black"/>
-              <rect x="55" y="55" width="5" height="5" fill="black"/>
-              <rect x="60" y="65" width="5" height="5" fill="black"/>
-              <rect x="70" y="55" width="5" height="5" fill="black"/>
-              <rect x="75" y="65" width="5" height="5" fill="black"/>
-              <rect x="65" y="75" width="5" height="5" fill="black"/>
-              <rect x="75" y="75" width="5" height="5" fill="black"/>
-              <rect x="5" y="35" width="5" height="5" fill="black"/>
-              <rect x="15" y="35" width="5" height="5" fill="black"/>
-              <rect x="5" y="45" width="5" height="5" fill="black"/>
-              <rect x="20" y="45" width="5" height="5" fill="black"/>
-              <rect x="5" y="55" width="5" height="5" fill="black"/>
-              <rect x="15" y="55" width="5" height="5" fill="black"/>
-              <rect x="25" y="50" width="5" height="5" fill="black"/>
-            </svg>
-          </div>
+      <h3 class="font-display font-semibold text-lg text-slate-200 mb-5">My digital card</h3>
+      <div class="vcard">
+        <div class="flex items-center gap-4 mb-5">
+          <img src="images/vcard-photo.jpg" alt="Timothy Kyebambe" class="vcard-photo" />
           <div>
-            <p class="font-mono text-xs text-emerald-400 tracking-widest uppercase">VCard</p>
-            <p class="font-body text-xs text-slate-500 mt-1">Scan to Save Contact</p>
+            <p class="font-display font-bold text-slate-100 text-lg leading-tight">Timothy Kyebambe</p>
+            <p class="font-mono text-xs text-emerald-400 mt-1">Web &amp; App Developer · IT Student</p>
+            <p class="font-mono text-xs text-slate-500 mt-0.5">Kampala, Uganda</p>
           </div>
-          <p class="font-mono text-xs text-slate-600 italic">[ Replace with your VCard QR ]</p>
         </div>
- 
-        <!-- QR 2 -->
-        <div class="qr-box flex-1">
-          <div class="qr-inner">
-            <svg width="90" height="90" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
-              <rect width="90" height="90" fill="white"/>
-              <rect x="5" y="5" width="25" height="25" fill="black" rx="2"/>
-              <rect x="9" y="9" width="17" height="17" fill="white" rx="1"/>
-              <rect x="12" y="12" width="11" height="11" fill="black" rx="1"/>
-              <rect x="60" y="5" width="25" height="25" fill="black" rx="2"/>
-              <rect x="64" y="9" width="17" height="17" fill="white" rx="1"/>
-              <rect x="67" y="12" width="11" height="11" fill="black" rx="1"/>
-              <rect x="5" y="60" width="25" height="25" fill="black" rx="2"/>
-              <rect x="9" y="64" width="17" height="17" fill="white" rx="1"/>
-              <rect x="12" y="67" width="11" height="11" fill="black" rx="1"/>
-              <rect x="35" y="8" width="5" height="5" fill="black"/>
-              <rect x="48" y="5" width="5" height="5" fill="black"/>
-              <rect x="42" y="12" width="5" height="5" fill="black"/>
-              <rect x="35" y="20" width="5" height="5" fill="black"/>
-              <rect x="55" y="35" width="5" height="5" fill="black"/>
-              <rect x="40" y="35" width="5" height="5" fill="black"/>
-              <rect x="35" y="42" width="5" height="5" fill="black"/>
-              <rect x="48" y="40" width="5" height="5" fill="black"/>
-              <rect x="62" y="35" width="5" height="5" fill="black"/>
-              <rect x="70" y="42" width="5" height="5" fill="black"/>
-              <rect x="60" y="50" width="5" height="5" fill="black"/>
-              <rect x="72" y="55" width="5" height="5" fill="black"/>
-              <rect x="55" y="62" width="5" height="5" fill="black"/>
-              <rect x="68" y="68" width="5" height="5" fill="black"/>
-              <rect x="80" y="60" width="5" height="5" fill="black"/>
-              <rect x="38" y="60" width="5" height="5" fill="black"/>
-              <rect x="35" y="72" width="5" height="5" fill="black"/>
-              <rect x="45" y="78" width="5" height="5" fill="black"/>
-              <rect x="5" y="38" width="5" height="5" fill="black"/>
-              <rect x="18" y="35" width="5" height="5" fill="black"/>
-              <rect x="8" y="48" width="5" height="5" fill="black"/>
-              <rect x="22" y="52" width="5" height="5" fill="black"/>
-            </svg>
-          </div>
-          <div>
-            <p class="font-mono text-xs text-emerald-400 tracking-widest uppercase">Portfolio URL</p>
-            <p class="font-body text-xs text-slate-500 mt-1">Scan to Share Website</p>
-          </div>
-          <p class="font-mono text-xs text-slate-600 italic">[ Replace with site URL QR ]</p>
+
+        <div class="space-y-2 mb-5">
+          <a href="tel:+256702635288" class="flex items-center gap-3 font-body text-sm text-slate-400 hover:text-emerald-400 transition-colors">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +256 702 635 288
+          </a>
+          <a href="mailto:t.kyebambe.freewill@gmail.com" class="flex items-center gap-3 font-body text-sm text-slate-400 hover:text-emerald-400 transition-colors break-all">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="flex-shrink-0"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            t.kyebambe.freewill@gmail.com
+          </a>
         </div>
- 
+
+        <!-- Live QR + actions -->
+        <div class="flex flex-col sm:flex-row items-center gap-5 pt-4 border-t border-slate-800">
+          <div class="text-center" id="qr-wrap" style="display:none;">
+            <div id="qrcode" class="mx-auto"></div>
+            <p class="font-mono text-[0.65rem] text-slate-500 mt-2 tracking-widest uppercase">Scan to save</p>
+          </div>
+          <div class="flex flex-col gap-3 w-full">
+            <a href="timothy-kyebambe.vcf" download class="btn-primary justify-center text-xs py-2.5">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Save my contact
+            </a>
+            <button id="copy-link-btn" type="button" class="btn-outline justify-center text-xs py-2.5">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+              <span id="copy-link-label">Copy site link</span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
  
@@ -1016,13 +1196,26 @@
     <div class="flex items-center gap-6">
       <a href="mailto:t.kyebambe.freewill@gmail.com" class="nav-link hover:text-emerald-400 transition-colors">Email</a>
       <a href="https://linkedin.com/in/timothy-kyebambe-53481b226" target="_blank" rel="noopener" class="nav-link hover:text-emerald-400 transition-colors">LinkedIn</a>
-      <a href="https://github.com/timothykyebambe" target="_blank" rel="noopener" class="nav-link hover:text-emerald-400 transition-colors">GitHub</a>
+      <a href="https://github.com/kyebambe-timothy" target="_blank" rel="noopener" class="nav-link hover:text-emerald-400 transition-colors">GitHub</a>
     </div>
-    <p class="font-mono text-xs text-slate-700">© 2025 Timothy Kyebambe</p>
+    <p class="font-mono text-xs text-slate-700">© 2026 Timothy Kyebambe</p>
   </div>
+  <p id="freewill-line" class="freewill-line text-center mt-6"></p>
 </footer>
  
  
+<!-- ═══ LIGHTBOX ═══ -->
+<button id="to-top" aria-label="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+<div id="lightbox" class="lightbox" aria-hidden="true">
+  <button class="lb-btn lb-close" id="lb-close" aria-label="Close">&times;</button>
+  <button class="lb-btn lb-prev" id="lb-prev" aria-label="Previous">&#8249;</button>
+  <img id="lb-img" src="" alt="" />
+  <button class="lb-btn lb-next" id="lb-next" aria-label="Next">&#8250;</button>
+  <p class="lb-caption" id="lb-caption"></p>
+</div>
+
 <!-- ════════════════════════════════════════════ SCRIPTS ═══════════════════════════════════════════════ -->
 <script>
   // ── Hamburger menu ──────────────────────────────────────────────────────
@@ -1059,6 +1252,168 @@
   // ── Contact form (Formspree) ─────────────────────────────────────────────
   window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
   formspree('initForm', { formElement: '#contact-form', formId: 'xdavpbaw' });
+
+  // ── Lightbox (gallery + project visuals) ─────────────────────────────────
+  (function () {
+    const items = Array.from(document.querySelectorAll('[data-lb-src]'));
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lb-img');
+    const lbCap = document.getElementById('lb-caption');
+    let idx = 0;
+    function show(i) {
+      idx = (i + items.length) % items.length;
+      lbImg.src = items[idx].getAttribute('data-lb-src');
+      lbCap.textContent = items[idx].getAttribute('data-lb-cap') || '';
+    }
+    function open(i) { show(i); lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); }
+    function close() { lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); lbImg.src = ''; }
+    items.forEach((el, i) => el.addEventListener('click', () => open(i)));
+    document.getElementById('lb-close').addEventListener('click', close);
+    document.getElementById('lb-next').addEventListener('click', () => show(idx + 1));
+    document.getElementById('lb-prev').addEventListener('click', () => show(idx - 1));
+    lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+    document.addEventListener('keydown', (e) => {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowRight') show(idx + 1);
+      if (e.key === 'ArrowLeft') show(idx - 1);
+    });
+  })();
+
+  // ── Live vCard QR (multi-source loader, hides gracefully if unavailable) ──
+  (function () {
+    const vcard = [
+      'BEGIN:VCARD','VERSION:3.0',
+      'N:Kyebambe;Timothy;;;','FN:Timothy Kyebambe',
+      'TITLE:Web & App Developer · IT Student',
+      'EMAIL;TYPE=INTERNET:t.kyebambe.freewill@gmail.com',
+      'TEL;TYPE=CELL:+256702635288',
+      'URL:https://kyebambe-timothy.github.io/Timothy-s_Portfolio/',
+      'END:VCARD'
+    ].join('\n');
+    const sources = [
+      'https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js',
+      'https://cdn.jsdelivr.net/npm/davidshimjs-qrcodejs@0.0.2/qrcode.min.js',
+      'https://unpkg.com/qrcodejs@1.0.0/qrcode.min.js'
+    ];
+    function drawQR() {
+      const el = document.getElementById('qrcode');
+      const wrap = document.getElementById('qr-wrap');
+      if (!el || !window.QRCode) return;
+      try {
+        new QRCode(el, { text: vcard, width: 104, height: 104, colorDark: '#020617', colorLight: '#ffffff', correctLevel: QRCode.CorrectLevel.M });
+        if (wrap) wrap.style.display = '';
+      } catch (e) { /* leave hidden */ }
+    }
+    function loadFrom(i) {
+      if (window.QRCode) { drawQR(); return; }
+      if (i >= sources.length) return; // all failed → QR stays hidden, Save button still works
+      const s = document.createElement('script');
+      s.src = sources[i];
+      s.onload = function () { window.QRCode ? drawQR() : loadFrom(i + 1); };
+      s.onerror = function () { loadFrom(i + 1); };
+      document.head.appendChild(s);
+    }
+    loadFrom(0);
+  })();
+
+  // ── Copy site link ───────────────────────────────────────────────────────
+  (function () {
+    const btn = document.getElementById('copy-link-btn');
+    const label = document.getElementById('copy-link-label');
+    if (!btn) return;
+    btn.addEventListener('click', async () => {
+      const url = window.location.href;
+      try {
+        if (navigator.share) { await navigator.share({ title: 'Timothy Kyebambe', url }); return; }
+        await navigator.clipboard.writeText(url);
+        const old = label.textContent; label.textContent = 'Copied!';
+        setTimeout(() => label.textContent = old, 1800);
+      } catch (e) { /* user cancelled or unsupported */ }
+    });
+  })();
+
+  // ── A quiet word for the curious (console) ───────────────────────────────
+  console.log(
+    '%cYou opened the console — so you already think in systems.%c\nHere\'s one more: your life runs on the assumptions you keep.\nAudit them. Ship the ones that build you.  — Freewill',
+    'color:#34d399;font-size:14px;font-weight:bold',
+    'color:#94a3b8;font-size:12px'
+  );
+
+  // ── Rotating Freewill line (footer) ──────────────────────────────────────
+  (function () {
+    const el = document.getElementById('freewill-line');
+    if (!el) return;
+    const lines = [
+      "Your mind is running a program you didn't write. The good news: you have edit access.",
+      "Everything here was built on purpose. So is a life. Decide the ending, then live like it's already done."
+    ];
+    let i = 0;
+    el.textContent = lines[0];
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    setInterval(() => {
+      el.style.opacity = '0';
+      setTimeout(() => { i = (i + 1) % lines.length; el.textContent = lines[i]; el.style.opacity = '1'; }, 800);
+    }, 7000);
+  })();
+
+  // ── Hero typed-role rotator (signature) ──────────────────────────────────
+  (function () {
+    const el = document.getElementById('typed-role');
+    if (!el) return;
+    const roles = ['websites.', 'mobile apps.', 'data systems.', 'clean tools.', 'and I shoot photos.'];
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) { el.textContent = ' web & app solutions.'; return; }
+    let r = 0, c = 0, deleting = false;
+    function tick() {
+      const word = roles[r];
+      el.textContent = ' ' + word.substring(0, c);
+      if (!deleting && c < word.length) { c++; setTimeout(tick, 70); }
+      else if (!deleting && c === word.length) { deleting = true; setTimeout(tick, 1400); }
+      else if (deleting && c > 0) { c--; setTimeout(tick, 35); }
+      else { deleting = false; r = (r + 1) % roles.length; setTimeout(tick, 250); }
+    }
+    tick();
+  })();
+
+  // ── Scroll progress bar ──────────────────────────────────────────────────
+  (function () {
+    const bar = document.getElementById('progress-bar');
+    if (!bar) return;
+    function update() {
+      const h = document.documentElement;
+      const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight);
+      bar.style.width = (scrolled * 100) + '%';
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  })();
+
+  // ── Active nav link on scroll ────────────────────────────────────────────
+  (function () {
+    const sections = document.querySelectorAll('section[id]');
+    const links = document.querySelectorAll('nav a.nav-link[href^="#"]');
+    if (!sections.length || !links.length) return;
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    sections.forEach(s => navObserver.observe(s));
+  })();
+
+  // ── Back to top ──────────────────────────────────────────────────────────
+  (function () {
+    const btn = document.getElementById('to-top');
+    if (!btn) return;
+    window.addEventListener('scroll', () => {
+      btn.classList.toggle('show', window.scrollY > 600);
+    }, { passive: true });
+    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  })();
 </script>
 <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
  
